@@ -1,6 +1,6 @@
 # Neural Cellular Automata (Based on https://distill.pub/2020/growing-ca/) implemented in Jax (Flax)
 
-![Alt Text](images/gecko.gif)
+![Gecko gif](https://raw.githubusercontent.com/shyamsn97/jax-nca/main/images/gecko.gif?token=GHSAT0AAAAAABTB4G7FLAJSLDHSIOQONS3IYTB5ZEA)
 
 ---
 
@@ -24,7 +24,7 @@ For more information, view the awesome article https://distill.pub/2020/growing-
 
 Image below describes a single update step: https://github.com/distillpub/post--growing-ca/blob/master/public/figures/model.svg
 
-![Alt Text](images/model.svg)
+![NCA update](https://raw.githubusercontent.com/shyamsn97/jax-nca/main/images/model.svg?token=GHSAT0AAAAAABTB4G7FOWOPXEUYVLBGRNSWYTB5YUA)
 
 ---
 

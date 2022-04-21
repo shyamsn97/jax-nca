@@ -15,13 +15,13 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name="jax_nca",
     version="0.1.0",
-    url="https://github.com/kragniz/cookiecutter-pypackage-minimal",
+    url="https://github.com/shyamsn97/jax-nca",
     license='MIT',
 
     author="Shyam Sudhakaran",
     author_email="shyamsnair@protonmail.com",
 
-    description="DUMB",
+    description="Neural Cellular Automata (https://distill.pub/2020/growing-ca/ -- Mordvintsev, et al., \"Growing Neural Cellular Automata\", Distill, 2020) implemented in JAX",
 
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -48,6 +48,6 @@ setup(
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'License :: OSI Approved :: MIT License',
-        'Programming Languposter ge :: Python :: 3',
+        'Programming Language :: Python :: 3.9',
     ],
 )
