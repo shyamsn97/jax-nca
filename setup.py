@@ -14,7 +14,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="jax_nca",
-    version="0.1.0",
+    version="0.1.2",
     url="https://github.com/shyamsn97/jax-nca",
     license='MIT',
 
