@@ -17,12 +17,6 @@ class SobelPerceptionNet(nn.Module):
         num_channels = x.shape[-1]
 
         # 2D sobel kernels - IOHW layout
-        # identity = jnp.outer(jnp.array([0.0, 1.0, 0.0]), jnp.array([0.0, 1.0, 0.0]))[
-        #     jnp.newaxis, jnp.newaxis, :, :
-        # ]
-        # identity_kernel = (
-        #     jnp.zeros((num_channels, num_channels, 3, 3), dtype=jnp.float32) + identity
-        # )
 
         x_sobel_kernel = jnp.zeros(
             (num_channels, num_channels, 3, 3), dtype=jnp.float32
@@ -58,13 +52,6 @@ class SobelPerceptionNet(nn.Module):
             (1, 1),  # window strides
             "SAME",
         )  # padding mode
-
-        # identity_out = lax.conv(
-        #     x,  # lhs = NCHW image tensor
-        #     identity_kernel,  # rhs = OIHW conv kernel tensor
-        #     (1, 1),  # window strides
-        #     "SAME",
-        # )  # padding mode
 
         out = jnp.concatenate([x, x_out, y_out], axis=1)
         return jnp.transpose(out, [0, 2, 3, 1])  # N H W C
