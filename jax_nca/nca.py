@@ -117,6 +117,15 @@ class NCA(nn.Module):
     trainable_perception: bool = False
     alpha: float = 1.0
 
+    """
+        num_hidden_channels: Number of hidden channels for each cell to use
+        num_target_channels: Number of target channels to be used
+        alpha_living_threshold: threshold to determine whether a cell lives or dies
+        cell_fire_rate: probability that a cell receives an update per step
+        trainable_perception: if true, instead of using sobel filters use a trainable conv net
+        alpha: scalar value to be multiplied to updates
+    """
+
     @classmethod
     def create_seed(
         cls,
