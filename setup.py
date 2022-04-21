@@ -39,7 +39,10 @@ setup(
         'optax',
         'tqdm',
         'pandas',
-        'pillow'
+        'pillow',
+        'ipycanvas', 
+        'orjson',
+        'opencv-python'
     ],
 
     classifiers=[

@@ -100,12 +100,12 @@ class TrainablePerception(nn.Module):
 
 
 @functools.partial(jax.jit, static_argnames=("apply_fn", "num_steps"))
-def nca_multi_step(apply_fn, params, nca_seed: jnp.array, rng, num_steps: int):
+def nca_multi_step(apply_fn, params, current_state: jnp.array, rng, num_steps: int):
     def forward(carry, inp):
         carry = apply_fn({"params": params}, carry, rng)
         return carry, carry
 
-    x, outs = jax.lax.scan(forward, nca_seed, None, length=num_steps)
+    x, outs = jax.lax.scan(forward, current_state, None, length=num_steps)
     return x, outs
 
 
@@ -185,8 +185,8 @@ class NCA(nn.Module):
             bytes_output = f.read()
         return serialization.from_bytes(init_params, bytes_output)
 
-    def multi_step(self, params, nca_seed: jnp.array, rng, num_steps: int = 2):
-        return nca_multi_step(self.apply, params, nca_seed, rng, num_steps)
+    def multi_step(self, params, current_state: jnp.array, rng, num_steps: int = 2):
+        return nca_multi_step(self.apply, params, current_state, rng, num_steps)
 
     def to_rgb(self, x: jnp.array):
         rgb, a = x[..., :3], jnp.clip(x[..., 3:4], 0.0, 1.0)

@@ -12,6 +12,8 @@ import tqdm
 from flax.training import train_state  # Useful dataclass to keep train state
 from tensorboardX import SummaryWriter
 
+from jax_nca.utils import make_circle_masks
+
 
 def get_tensorboard_logger(
     experiment_name: str, base_log_path: str = "tensorboard_logs"
@@ -115,15 +117,6 @@ class EmojiTrainer:
         self.n_damage = n_damage
         self.state = None
 
-    def make_circle_masks(self, n, h, w):
-        x = np.linspace(-1.0, 1.0, w)[None, None, :]
-        y = np.linspace(-1.0, 1.0, h)[None, :, None]
-        center = np.random.uniform(-0.5, 0.5, size=[2, n, 1, 1])
-        r = np.random.uniform(0.1, 0.4, size=[n, 1, 1])
-        x, y = (x - center[0]) / r, (y - center[1]) / r
-        mask = x * x + y * y < 1.0
-        return mask.astype(float)
-
     def train(
         self,
         num_epochs,
@@ -163,7 +156,7 @@ class EmojiTrainer:
                 if self.n_damage > 0:
                     damage = (
                         1.0
-                        - self.make_circle_masks(
+                        - make_circle_masks(
                             int(self.n_damage), self.img_shape[0], self.img_shape[1]
                         )[..., None]
                     )
