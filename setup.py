@@ -13,7 +13,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(
-    name="PACKAGE_NAME",
+    name="jax_nca",
     version="0.1.0",
     url="https://github.com/kragniz/cookiecutter-pypackage-minimal",
     license='MIT',
@@ -29,11 +29,22 @@ setup(
     packages=find_packages(exclude=('tests',)),
 
     install_requires=[
+        'numpy',
+        'jax',
+        'flax',
+        'matplotlib',
+        'einops',
+        'tensorflow',
+        'tensorboardX',
+        'optax',
+        'tqdm',
+        'pandas',
+        'pillow'
     ],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
+        'Programming Languposter ge :: Python :: 3',
     ],
 )

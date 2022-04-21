@@ -20,9 +20,9 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint: ## check style with flake8
-	isort --profile black PACKAGE_NAME
-	black PACKAGE_NAME
-	flake8 PACKAGE_NAME
+	isort --profile black jax_nca
+	black jax_nca
+	flake8 jax_nca
 
 install: clean lint
 	python setup.py install
